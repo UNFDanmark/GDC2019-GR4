@@ -5,58 +5,76 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public float moveSpeed = 1f;
-    public float speedLimit = 9f;
+    public float moveForce = 1f;
+    public float maxSpeed = 5;
 
     Rigidbody rb;
+    FuelConsumptionScript fuelConsume;
     float horizontalMove = 0f;
     float verticalMove = 0f;
-    float previousAngleOfMovement, wantedAngleOfMovement = 0.0f;
-
+    bool wantToMove = false;
+    Vector3 previousVelocity = new Vector3(0, 0, 0);
+    
     
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        fuelConsume = GetComponent<FuelConsumptionScript>();
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        horizontalMove = Input.GetAxis("Horizontal") * moveSpeed;
-        verticalMove = Input.GetAxis("Vertical") * moveSpeed;
-
+       
         //Resets player position, for testing only
         if (Input.GetKey(KeyCode.I)&& Input.GetKey(KeyCode.O)&& Input.GetKey(KeyCode.P))
         {
-            transform.position = Vector3.zero + Vector3.up;
+            transform.position = Vector3.zero + Vector3.up*1.1f;
             rb.velocity = Vector3.zero;
-        }
-
+            fuelConsume.currentFuel = fuelConsume.maximumFuel;
+        }       
     }
     void FixedUpdate()
     {
-        Move();
+        horizontalMove = Input.GetAxis("Horizontal") * moveForce;
+        verticalMove = Input.GetAxis("Vertical") * moveForce;
+
+
+        if (horizontalMove != 0 || verticalMove != 0)
+        {
+            wantToMove = true;
+        }
+        else
+        {
+            wantToMove = false;
+        }
+
+        if (wantToMove == true)
+        {
+            Move();
+            previousVelocity = rb.velocity;
+        }
         
     }
     void Move()
     {
-        Vector3 currentVelocity = rb.velocity;
-        Vector3 localVelocity = transform.InverseTransformDirection(currentVelocity);
-        previousAngleOfMovement = Mathf.Acos(currentVelocity.x / currentVelocity.magnitude);
-        if (currentVelocity.magnitude < speedLimit)
+
+        //uses currentforce counter to make a max movement speed
+        if (rb.velocity.magnitude >= maxSpeed)
+        {
+            rb.velocity = previousVelocity;
+        }
+        else
         {
             rb.AddForce(new Vector3(horizontalMove, 0, verticalMove));
         }
-        else if (currentVelocity.magnitude >= speedLimit)
-        {
-            wantedAngleOfMovement = Mathf.Acos()
-            if (true)
-            {
 
-            }
+
+        if (wantToMove == true)
+        {
+            fuelConsume.ConsumeFuel();
         }
-        print(currentVelocity + "rb");
-        print(localVelocity + "local");
     }
 }
