@@ -165,7 +165,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 367727668}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 0.5
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 0
@@ -275,7 +275,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 93c7a13b16afd0d49aec74400c92cecf, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.5
+  m_Volume: 0.1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -389,6 +389,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   partPickedUp: 0
+  partReturned: 0
 --- !u!4 &502484310
 Transform:
   m_ObjectHideFlags: 0
@@ -520,9 +521,10 @@ GameObject:
   - component: {fileID: 694902810}
   - component: {fileID: 694902809}
   - component: {fileID: 694902808}
+  - component: {fileID: 694902812}
   m_Layer: 0
   m_Name: Spaceship(Placeholder)
-  m_TagString: Untagged
+  m_TagString: Spaceship
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -594,12 +596,24 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 694902807}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -12.29, y: 4.85, z: 0}
-  m_LocalScale: {x: 8.2455, y: 8.2455, z: 8.2455}
+  m_LocalPosition: {x: -12.29, y: 4, z: -0}
+  m_LocalScale: {x: 8, y: 8, z: 8}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!114 &694902812
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 694902807}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41adbef8c1b6a734690f1a97dd5bf503, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &813833637
 GameObject:
   m_ObjectHideFlags: 0
