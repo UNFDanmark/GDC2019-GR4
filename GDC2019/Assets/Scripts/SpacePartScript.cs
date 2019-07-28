@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class SpacePartScript : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    GameManagerScript managerScript;
+    private void Awake()
     {
-        
+        managerScript = GameObject.Find("GameManager").GetComponent<GameManagerScript>();
     }
-
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerEnter(Collider other)
     {
-        
+        if (other.gameObject.CompareTag("Player") == true)
+        {
+            managerScript.partPickedUp = true;
+            print("Picked up a part");
+            gameObject.SetActive(false);
+        }
     }
 }
