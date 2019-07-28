@@ -258,10 +258,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9899dc33b677a443bb75fa7f46bc2a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maximumFuel: 1000000
-  consumptionRate: 1000000
+  maximumFuel: 100
+  consumptionRate: 5
   lowFuel: 30
-  alertSound: {fileID: 0}
   currentFuel: 0
 --- !u!82 &367727676
 AudioSource:
@@ -273,8 +272,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_audioClip: {fileID: 8300000, guid: 93c7a13b16afd0d49aec74400c92cecf, type: 3}
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
