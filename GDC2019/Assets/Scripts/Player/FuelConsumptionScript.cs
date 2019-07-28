@@ -8,12 +8,12 @@ public class FuelConsumptionScript : MonoBehaviour
     public int maximumFuel = 100;   
     public int consumptionRate = 5;
     public int lowFuel = 30;
-    public AudioClip alertSound;
     AudioSource aSource;
 
     public int currentFuel = 0;
     int consumptionCounter = 0;
     bool fuelWarning = false;
+    float timeSinceSound;
     // Start is called before the first frame update
     void Start()
     {
@@ -34,7 +34,10 @@ public class FuelConsumptionScript : MonoBehaviour
         if (currentFuel <= lowFuel)
         {
             fuelWarning = true;
-            aSource.PlayOneShot(alertSound);
+            if (aSource.isPlaying == false)
+            {
+                aSource.Play();
+            }
         }
     }
 
