@@ -5,7 +5,7 @@ using UnityEngine;
 public class SpacePartScript : MonoBehaviour
 {
     GameManagerScript managerScript;
-    private void Awake()
+    private void Start()
     {
         managerScript = GameObject.Find("GameManager").GetComponent<GameManagerScript>();
     }
@@ -14,7 +14,6 @@ public class SpacePartScript : MonoBehaviour
         if (other.gameObject.CompareTag("Player") == true)
         {
             managerScript.partPickedUp = true;
-            print("Picked up a part");
             gameObject.SetActive(false);
         }
     }
