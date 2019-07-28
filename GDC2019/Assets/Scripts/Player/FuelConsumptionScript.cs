@@ -2,15 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class FuelConsumptionScript : MonoBehaviour
 {
     public int maximumFuel = 100;   
     public int consumptionRate = 5;
     public int lowFuel = 30;
-    AudioSource aSource;
+    public Slider fuelBar;
 
     public int currentFuel = 0;
+    AudioSource aSource;
     int consumptionCounter = 0;
     bool fuelWarning = false;
     float timeSinceSound;
@@ -21,6 +23,7 @@ public class FuelConsumptionScript : MonoBehaviour
         consumptionCounter = 0;
         fuelWarning = false;
         aSource = GetComponent<AudioSource>();
+        fuelBar.value = CalculateFuel();
     }
 
     // Update is called once per frame
@@ -39,6 +42,11 @@ public class FuelConsumptionScript : MonoBehaviour
                 aSource.Play();
             }
         }
+        
+    }
+    float CalculateFuel()
+    {
+        return currentFuel / maximumFuel;
     }
 
     public void ConsumeFuel()
@@ -48,7 +56,10 @@ public class FuelConsumptionScript : MonoBehaviour
         {
             currentFuel--;
             consumptionCounter = 0;
+            fuelBar.value = CalculateFuel();
         }
+
+        
         
     }
 }
