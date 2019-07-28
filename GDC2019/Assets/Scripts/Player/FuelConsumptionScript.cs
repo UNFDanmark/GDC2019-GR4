@@ -8,6 +8,8 @@ public class FuelConsumptionScript : MonoBehaviour
     public int maximumFuel = 100;   
     public int consumptionRate = 5;
     public int lowFuel = 30;
+    public AudioClip alertSound;
+    AudioSource aSource;
 
     public int currentFuel = 0;
     int consumptionCounter = 0;
@@ -18,6 +20,7 @@ public class FuelConsumptionScript : MonoBehaviour
         currentFuel = maximumFuel;
         consumptionCounter = 0;
         fuelWarning = false;
+        aSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -31,6 +34,7 @@ public class FuelConsumptionScript : MonoBehaviour
         if (currentFuel <= lowFuel)
         {
             fuelWarning = true;
+            aSource.PlayOneShot(alertSound);
         }
     }
 
@@ -42,5 +46,6 @@ public class FuelConsumptionScript : MonoBehaviour
             currentFuel--;
             consumptionCounter = 0;
         }
+        
     }
 }
