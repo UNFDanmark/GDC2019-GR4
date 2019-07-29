@@ -6,12 +6,12 @@ using UnityEngine.UI;
 
 public class FuelConsumptionScript : MonoBehaviour
 {
-    public int maximumFuel = 100;   
+    public float maximumFuel = 100;   
     public int consumptionRate = 5;
     public int lowFuel = 30;
     public Slider fuelBar;
 
-    public int currentFuel = 0;
+    public float currentFuel = 0;
     AudioSource aSource;
     int consumptionCounter = 0;
     bool fuelWarning = false;
