@@ -30,7 +30,8 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
+        transform.rotation = Quaternion.LookRotation(new Vector3(rb.velocity.x, 0, rb.velocity.z));
+
         //Resets player position, for testing only
         if (Input.GetKey(KeyCode.I)&& Input.GetKey(KeyCode.O)&& Input.GetKey(KeyCode.P))
         {
@@ -57,14 +58,6 @@ public class PlayerController : MonoBehaviour
             wantToMove = false;
         }
 
-        float angleBetweenRotations = Vector3.Angle(transform.forward, rb.velocity);
-        if (angleBetweenRotations > 180)
-        {
-            angleBetweenRotations = -180 + (angleBetweenRotations - 180);
-            print(angleBetweenRotations);
-        }
-        transform.Rotate(Vector3.up, angleBetweenRotations * Time.fixedDeltaTime * rotateSpeed);
-
         if (wantToMove == true)
         {
             Move();
@@ -75,18 +68,17 @@ public class PlayerController : MonoBehaviour
     }
     void Move()
     {
+        rb.AddForce(new Vector3(horizontalMove, 0, verticalMove));
 
         //uses currentforce counter to make a max movement speed
         if (rb.velocity.magnitude >= maxSpeed)
         {
             rb.velocity = previousVelocity;
-        }
-        else
-        {
-            rb.AddForce(new Vector3(horizontalMove, 0, verticalMove));
+            
         }
         
-        
+
+
 
         if (wantToMove == true)
         {
