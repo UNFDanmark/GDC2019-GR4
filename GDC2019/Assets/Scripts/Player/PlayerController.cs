@@ -11,6 +11,8 @@ public class PlayerController : MonoBehaviour
 
     Rigidbody rb;
     FuelConsumptionScript fuelConsume;
+    AudioSource source;
+
     float horizontalMove = 0f;
     float verticalMove = 0f;
     Vector3 previousAngleOfVelocity;
@@ -24,6 +26,7 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         fuelConsume = GetComponent<FuelConsumptionScript>();
+        source = GetComponent<AudioSource>();
         
     }
 
@@ -71,6 +74,10 @@ public class PlayerController : MonoBehaviour
     {
         rb.AddForce(new Vector3(horizontalMove, 0, verticalMove));
 
+        if (true)
+        {
+
+        }
         //uses currentforce counter to make a max movement speed
         if (rb.velocity.magnitude >= maxSpeed)
         {
