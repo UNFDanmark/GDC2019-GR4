@@ -11,9 +11,8 @@ public class PlayerController : MonoBehaviour
 
     Rigidbody rb;
     FuelConsumptionScript fuelConsume;
-    AudioSource source;
-    public AudioClip[] thrusterSounds = new AudioClip[3];// first clip is fade-in, second is loop, and third is fade-out
-
+    public AudioSource source;
+    
     float horizontalMove = 0f;
     float verticalMove = 0f;
     Vector3 previousAngleOfVelocity;
@@ -28,7 +27,7 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         fuelConsume = GetComponent<FuelConsumptionScript>();
-        source = GetComponent<AudioSource>();
+        
         
     }
 
@@ -44,9 +43,16 @@ public class PlayerController : MonoBehaviour
             rb.velocity = Vector3.zero;
             fuelConsume.currentFuel = fuelConsume.maximumFuel;
         }
-        
-            
-        
+
+        if (startedThrust && !source.isPlaying)
+        {
+            source.Play();
+        }
+        else
+        {
+            source.Stop();
+        }
+
     }
     void FixedUpdate()
     {
@@ -57,13 +63,15 @@ public class PlayerController : MonoBehaviour
         if (horizontalMove != 0 || verticalMove != 0)
         {
             wantToMove = true;
+            startedThrust = true;
         }
         else
         {
             wantToMove = false;
+            startedThrust = false;
         }
 
-        if (wantToMove == true)
+        if (wantToMove)
         {
             
             previousVelocity = rb.velocity;
@@ -77,25 +85,12 @@ public class PlayerController : MonoBehaviour
     void Move()
     {
         rb.AddForce(new Vector3(horizontalMove, 0, verticalMove));
-        if (startedThrust == false)
-        {
-            source.PlayOneShot(thrusterSounds[0], 1f);
-            startedThrust = true;
-        }
-        else if (startedThrust == true)
-        {
-            source.PlayOneShot(thrusterSounds[1], 1f);
-        }
         
         //uses currentforce counter to make a max movement speed
         if (rb.velocity.magnitude >= maxSpeed)
         {
             rb.velocity = previousVelocity;         
-        }       
-
-        if (wantToMove == true)
-        {
-            fuelConsume.ConsumeFuel();
         }
+            fuelConsume.ConsumeFuel();
     }
 }
