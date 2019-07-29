@@ -8,13 +8,16 @@ public class GameManagerScript : MonoBehaviour
     public bool partPickedUp = false;
     public bool partReturned = false;
     public bool isDead = false;
+    public GameObject spaceshipLight;
 
     int currentScene;
+   
     
     // Start is called before the first frame update
     private void Awake()
     {
         GameObject[] tempManagers = GameObject.FindGameObjectsWithTag("GameManager");
+        spaceshipLight = GameObject.Find("Spaceship Light");
         foreach (GameObject manager in tempManagers)
         {
             if ( manager != gameObject)
@@ -27,6 +30,7 @@ public class GameManagerScript : MonoBehaviour
             }
         }
         
+        spaceshipLight.SetActive(false);
         currentScene = SceneManager.GetActiveScene().buildIndex;        
     }
 

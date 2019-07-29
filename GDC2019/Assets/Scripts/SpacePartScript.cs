@@ -14,7 +14,9 @@ public class SpacePartScript : MonoBehaviour
         if (other.gameObject.CompareTag("Player") == true)
         {
             managerScript.partPickedUp = true;
+            managerScript.spaceshipLight.SetActive(true);
             gameObject.SetActive(false);
         }
+
     }
 }
