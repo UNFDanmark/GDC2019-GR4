@@ -7,6 +7,7 @@ public class GameManagerScript : MonoBehaviour
 {
     public bool partPickedUp = false;
     public bool partReturned = false;
+    public bool isDead = false;
 
     int currentScene;
     
@@ -49,6 +50,11 @@ public class GameManagerScript : MonoBehaviour
         if (Input.GetKey(KeyCode.Escape))
         {
             SceneManager.LoadScene("Mechanics test");
+        }
+        if (isDead == true)
+        {
+            SceneManager.LoadScene("GameOver");
+            isDead = false;
         }
     }
 }
