@@ -12,12 +12,14 @@ public class PlayerController : MonoBehaviour
     Rigidbody rb;
     FuelConsumptionScript fuelConsume;
     AudioSource source;
+    public AudioClip[] thrusterSounds = new AudioClip[3];// first clip is fade-in, second is loop, and third is fade-out
 
     float horizontalMove = 0f;
     float verticalMove = 0f;
     Vector3 previousAngleOfVelocity;
     Vector3 desiredAngle;
     bool wantToMove = false;
+    bool startedThrust = false;
     Vector3 previousVelocity = new Vector3(0, 0, 0);
     
     
@@ -66,23 +68,29 @@ public class PlayerController : MonoBehaviour
             
             previousVelocity = rb.velocity;
             Move();
+            
         }
+        
 
         
     }
     void Move()
     {
         rb.AddForce(new Vector3(horizontalMove, 0, verticalMove));
-
-        if (true)
+        if (startedThrust == false)
         {
-
+            source.PlayOneShot(thrusterSounds[0], 1f);
+            startedThrust = true;
         }
+        else if (startedThrust == true)
+        {
+            source.PlayOneShot(thrusterSounds[1], 1f);
+        }
+        
         //uses currentforce counter to make a max movement speed
         if (rb.velocity.magnitude >= maxSpeed)
         {
-            rb.velocity = previousVelocity;
-            
+            rb.velocity = previousVelocity;         
         }       
 
         if (wantToMove == true)

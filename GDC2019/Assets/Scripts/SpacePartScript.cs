@@ -5,9 +5,15 @@ using UnityEngine;
 public class SpacePartScript : MonoBehaviour
 {
     GameManagerScript managerScript;
+    public AudioClip pickupSound;
+    public GameObject partLight;
     private void Start()
     {
         managerScript = GameObject.Find("GameManager").GetComponent<GameManagerScript>();
+    }
+    private void Update()
+    {
+        //partLight.GetComponent<Light>().intensity
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -15,6 +21,7 @@ public class SpacePartScript : MonoBehaviour
         {
             managerScript.partPickedUp = true;
             managerScript.spaceshipLight.SetActive(true);
+            AudioSource.PlayClipAtPoint(pickupSound, transform.position);
             gameObject.SetActive(false);
         }
 
