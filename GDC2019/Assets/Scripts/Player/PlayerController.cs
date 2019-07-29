@@ -60,8 +60,9 @@ public class PlayerController : MonoBehaviour
 
         if (wantToMove == true)
         {
-            Move();
+            
             previousVelocity = rb.velocity;
+            Move();
         }
 
         
@@ -75,10 +76,7 @@ public class PlayerController : MonoBehaviour
         {
             rb.velocity = previousVelocity;
             
-        }
-        
-
-
+        }       
 
         if (wantToMove == true)
         {

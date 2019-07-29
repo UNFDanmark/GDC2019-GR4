@@ -17,6 +17,7 @@ public class GameManagerScript : MonoBehaviour
     private void Awake()
     {
         GameObject[] tempManagers = GameObject.FindGameObjectsWithTag("GameManager");
+        spaceshipLight = GameObject.Find("Spaceship Light");
         foreach (GameObject manager in tempManagers)
         {
             if ( manager != gameObject)
@@ -28,7 +29,7 @@ public class GameManagerScript : MonoBehaviour
                 DontDestroyOnLoad(gameObject);     
             }
         }
-        spaceshipLight = GameObject.Find("Spaceship Light");
+        
         spaceshipLight.SetActive(false);
         currentScene = SceneManager.GetActiveScene().buildIndex;        
     }
