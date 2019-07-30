@@ -48,7 +48,7 @@ public class GameManagerScript : MonoBehaviour
             currentScene++;
             partPickedUp = false;
             partReturned = false;
-            SceneManager.LoadScene(currentScene);
+            StartCoroutine(ChangeSceneEnumerator(currentScene));
         }
         //Delete before build, ONLY FOR TESTING
         if (Input.GetKey(KeyCode.Escape))
@@ -56,9 +56,15 @@ public class GameManagerScript : MonoBehaviour
             SceneManager.LoadScene("Mechanics test");
         }
         if (isDead == true)
-        {
-            SceneManager.LoadScene("GameOver");
+        {            
             isDead = false;
+            StartCoroutine(ChangeSceneEnumerator(1));
         }
+    }
+
+    IEnumerator ChangeSceneEnumerator(int buildIndex)
+    {
+        yield return new WaitForSeconds(3);
+        SceneManager.LoadScene(buildIndex);
     }
 }
