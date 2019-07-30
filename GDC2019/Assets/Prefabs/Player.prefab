@@ -395,15 +395,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: spaceSuit
       objectReference: {fileID: 0}
+    - target: {fileID: -5178661895559278292, guid: effa46af3d15917459c5a954d7bab52a,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 973877516759717424, guid: 448b9e51840aae14d905720eb05b4284,
+        type: 3}
     - target: {fileID: -4216859302048453862, guid: effa46af3d15917459c5a954d7bab52a,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0
+      value: 2.1
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: effa46af3d15917459c5a954d7bab52a,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1
+      value: 1.2
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: effa46af3d15917459c5a954d7bab52a,
         type: 3}
@@ -455,6 +461,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 1b2f75446809e554db3c6cf2f87d3766, type: 2}
+    - target: {fileID: 6646398204452391589, guid: effa46af3d15917459c5a954d7bab52a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: effa46af3d15917459c5a954d7bab52a, type: 3}
 --- !u!4 &3384188399951705294 stripped
