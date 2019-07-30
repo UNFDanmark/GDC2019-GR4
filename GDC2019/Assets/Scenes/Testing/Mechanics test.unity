@@ -1940,6 +1940,21 @@ PrefabInstance:
       propertyPath: maximumFuel
       value: 1000
       objectReference: {fileID: 0}
+    - target: {fileID: 911686578842018513, guid: 8b01c8bd95fe0004cbd2dfba0b00f499,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.454
+      objectReference: {fileID: 0}
+    - target: {fileID: 911686578842018513, guid: 8b01c8bd95fe0004cbd2dfba0b00f499,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.799
+      objectReference: {fileID: 0}
+    - target: {fileID: 911686578842018513, guid: 8b01c8bd95fe0004cbd2dfba0b00f499,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.07
+      objectReference: {fileID: 0}
     - target: {fileID: 3384188399951705294, guid: 8b01c8bd95fe0004cbd2dfba0b00f499,
         type: 3}
       propertyPath: m_LocalRotation.z
@@ -1980,5 +1995,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 40676154337309185, guid: 8b01c8bd95fe0004cbd2dfba0b00f499,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1b2f75446809e554db3c6cf2f87d3766, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8b01c8bd95fe0004cbd2dfba0b00f499, type: 3}
