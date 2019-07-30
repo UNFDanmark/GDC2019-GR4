@@ -5,8 +5,11 @@ using UnityEngine;
 
 public class LevelChangerScript : MonoBehaviour
 {
+    GameManagerScript managerScript;
+
     public void Restart()
     {
-        SceneManager.LoadScene("Mechanics test");
+        managerScript = GameObject.Find("GameManager").GetComponent<GameManagerScript>();
+        SceneManager.LoadScene(managerScript.previousScene);
     }
 }

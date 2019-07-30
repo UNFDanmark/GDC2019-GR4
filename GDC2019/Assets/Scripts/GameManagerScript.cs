@@ -9,10 +9,10 @@ public class GameManagerScript : MonoBehaviour
     public bool partReturned = false;
     public bool isDead = false;
     public GameObject spaceshipLight;
+    public int previousScene;
 
     int currentScene;
-   
-    
+       
     // Start is called before the first frame update
     private void Awake()
     {
@@ -45,6 +45,7 @@ public class GameManagerScript : MonoBehaviour
         if (partReturned == true)
         {
             //you win
+            previousScene = currentScene;
             currentScene++;
             partPickedUp = false;
             partReturned = false;
@@ -58,6 +59,7 @@ public class GameManagerScript : MonoBehaviour
         if (isDead == true)
         {            
             isDead = false;
+            previousScene = currentScene;
             StartCoroutine(ChangeSceneEnumerator(1));
         }
     }
