@@ -12,9 +12,12 @@ EditorBuildSettings:
     path: Assets/Scenes/GameOver.unity
     guid: ece599ad33fa8cb458c2ee4f4eb9dd61
   - enabled: 1
-    path: Assets/Scenes/Testing/Mechanics test.unity
+    path: Assets/Scenes/Mechanics test.unity
     guid: 335bc28b702497f4d82b44bac6cdc95e
   - enabled: 1
     path: Assets/Scenes/Level 1.unity
     guid: dfb5cf3c5425ad24b867dc36eeeb4e97
+  - enabled: 1
+    path: Assets/Scenes/EndScene.unity
+    guid: 667d89e2f34a0de47a7a818cb94fa3b6
   m_configObjects: {}

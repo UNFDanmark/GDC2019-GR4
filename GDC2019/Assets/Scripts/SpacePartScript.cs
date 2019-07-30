@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SpacePartScript : MonoBehaviour
 {
-    GameManagerScript managerScript;
+    public GameManagerScript managerScript;
     public AudioClip pickupSound;
     public GameObject partLight;
     private void Start()

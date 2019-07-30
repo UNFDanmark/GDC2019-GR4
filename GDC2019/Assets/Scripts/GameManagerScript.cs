@@ -34,13 +34,19 @@ public class GameManagerScript : MonoBehaviour
             }
         }
         
-        spaceshipLight.SetActive(false);
+        
         currentScene = SceneManager.GetActiveScene().buildIndex;        
     }
+
 
     // Update is called once per frame
     void Update()
     {
+        if (Time.timeSinceLevelLoad < 1 && spaceshipLight.activeSelf || spaceshipLight == null)
+        {
+            spaceshipLight = GameObject.Find("Spaceship Light");
+            spaceshipLight.SetActive(false);
+        }
         
         if (currentScene != SceneManager.GetActiveScene().buildIndex)
         {
@@ -67,7 +73,7 @@ public class GameManagerScript : MonoBehaviour
 
     IEnumerator ChangeSceneEnumerator(int buildIndex)
     {
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(1.5f);
         SceneManager.LoadScene(buildIndex);
     }
 }
