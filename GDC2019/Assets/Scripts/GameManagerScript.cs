@@ -5,19 +5,23 @@ using UnityEngine.SceneManagement;
 
 public class GameManagerScript : MonoBehaviour
 {
+    public AudioClip winJingle;
     public bool partPickedUp = false;
     public bool partReturned = false;
     public bool isDead = false;
     public GameObject spaceshipLight;
+    public int previousScene;
+    
 
     int currentScene;
-   
-    
+    AudioSource source;
+       
     // Start is called before the first frame update
     private void Awake()
     {
         GameObject[] tempManagers = GameObject.FindGameObjectsWithTag("GameManager");
         spaceshipLight = GameObject.Find("Spaceship Light");
+        source = GetComponent<AudioSource>();
         foreach (GameObject manager in tempManagers)
         {
             if ( manager != gameObject)
@@ -45,20 +49,25 @@ public class GameManagerScript : MonoBehaviour
         if (partReturned == true)
         {
             //you win
+            previousScene = currentScene;
             currentScene++;
             partPickedUp = false;
             partReturned = false;
-            SceneManager.LoadScene(currentScene);
+            source.PlayOneShot(winJingle);
+            StartCoroutine(ChangeSceneEnumerator(currentScene));
         }
-        //Delete before build, ONLY FOR TESTING
-        if (Input.GetKey(KeyCode.Escape))
-        {
-            SceneManager.LoadScene("Mechanics test");
-        }
+       
         if (isDead == true)
-        {
-            SceneManager.LoadScene("GameOver");
+        {            
             isDead = false;
+            previousScene = currentScene;
+            StartCoroutine(ChangeSceneEnumerator(1));
         }
+    }
+
+    IEnumerator ChangeSceneEnumerator(int buildIndex)
+    {
+        yield return new WaitForSeconds(3);
+        SceneManager.LoadScene(buildIndex);
     }
 }

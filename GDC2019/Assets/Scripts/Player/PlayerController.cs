@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
 
     Rigidbody rb;
     FuelConsumptionScript fuelConsume;
-    AudioSource source;
+    public AudioSource source;
 
     float horizontalMove = 0f;
     float verticalMove = 0f;
@@ -26,8 +26,6 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         fuelConsume = GetComponent<FuelConsumptionScript>();
-        source = GetComponent<AudioSource>();
-        
     }
 
     // Update is called once per frame
@@ -35,17 +33,19 @@ public class PlayerController : MonoBehaviour
     {
         transform.rotation = Quaternion.LookRotation(new Vector3(rb.velocity.x, 0, rb.velocity.z));
 
-        //Resets player position, for testing only
-        if (Input.GetKey(KeyCode.I)&& Input.GetKey(KeyCode.O)&& Input.GetKey(KeyCode.P))
+        if (wantToMove)
         {
-            transform.position = Vector3.zero + Vector3.up*1.1f;
-            rb.velocity = Vector3.zero;
-            fuelConsume.currentFuel = fuelConsume.maximumFuel;
+            if (!source.isPlaying)
+            {
+                source.Play();
+            }
         }
-        
-            
-        
+        else
+        {
+            source.Stop();
+        }
     }
+
     void FixedUpdate()
     {
         horizontalMove = Input.GetAxis("Horizontal") * moveForce;
@@ -61,33 +61,24 @@ public class PlayerController : MonoBehaviour
             wantToMove = false;
         }
 
-        if (wantToMove == true)
+        if (wantToMove)
         {
-            
             previousVelocity = rb.velocity;
             Move();
         }
 
-        
+
+
     }
     void Move()
     {
         rb.AddForce(new Vector3(horizontalMove, 0, verticalMove));
-
-        if (true)
-        {
-
-        }
+        
         //uses currentforce counter to make a max movement speed
         if (rb.velocity.magnitude >= maxSpeed)
         {
-            rb.velocity = previousVelocity;
-            
-        }       
-
-        if (wantToMove == true)
-        {
-            fuelConsume.ConsumeFuel();
+            rb.velocity = previousVelocity;         
         }
+            fuelConsume.ConsumeFuel();
     }
 }

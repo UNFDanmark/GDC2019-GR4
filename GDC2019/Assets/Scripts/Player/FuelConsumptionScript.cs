@@ -8,20 +8,19 @@ public class FuelConsumptionScript : MonoBehaviour
 {
     public float maximumFuel = 100;   
     public int consumptionRate = 5;
-    public int lowFuel = 30;
     public Slider fuelBar;
 
     public float currentFuel = 0;
     AudioSource aSource;
     int consumptionCounter = 0;
-    bool fuelWarning = false;
     float timeSinceSound;
+    float lowFuel = 30;
     // Start is called before the first frame update
     void Start()
     {
         currentFuel = maximumFuel;
+        lowFuel = maximumFuel / 5;
         consumptionCounter = 0;
-        fuelWarning = false;
         aSource = GetComponent<AudioSource>();
         fuelBar.value = CalculateFuel();
     }
@@ -36,7 +35,6 @@ public class FuelConsumptionScript : MonoBehaviour
         }
         if (currentFuel <= lowFuel)
         {
-            fuelWarning = true;
             if (aSource.isPlaying == false)
             {
                 aSource.Play();
