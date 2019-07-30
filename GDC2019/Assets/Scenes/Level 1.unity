@@ -574,6 +574,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0851505eae63d6548acee6fc6da745ee, type: 3}
+--- !u!1 &561868747 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 911686577586887323, guid: 8b01c8bd95fe0004cbd2dfba0b00f499,
+    type: 3}
+  m_PrefabInstance: {fileID: 1698264918}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &561868748
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 561868747}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9899dc33b677a443bb75fa7f46bc2a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maximumFuel: 250
+  inputsPerFuel: 5
+  fuelBar: {fileID: 432442399}
+  currentFuel: 0
 --- !u!4 &584976015 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5320839840537666122, guid: 28cc1c84796a9344dbfb92b1fd94dded,
@@ -746,6 +768,51 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3982250289815844198, guid: f614f29c1ec610144bbaa9e88181a550,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3982250289815844198, guid: f614f29c1ec610144bbaa9e88181a550,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3982250289815844198, guid: f614f29c1ec610144bbaa9e88181a550,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3982250289815844198, guid: f614f29c1ec610144bbaa9e88181a550,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -89
+      objectReference: {fileID: 0}
+    - target: {fileID: 3982250289815844198, guid: f614f29c1ec610144bbaa9e88181a550,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3982250289815844198, guid: f614f29c1ec610144bbaa9e88181a550,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3982250289815844198, guid: f614f29c1ec610144bbaa9e88181a550,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3982250289815844198, guid: f614f29c1ec610144bbaa9e88181a550,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3982250289815844198, guid: f614f29c1ec610144bbaa9e88181a550,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3982250290338196462, guid: f614f29c1ec610144bbaa9e88181a550,
         type: 3}
@@ -1391,7 +1458,8 @@ PrefabInstance:
       propertyPath: fuelBar
       value: 
       objectReference: {fileID: 432442399}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 911686577586887321, guid: 8b01c8bd95fe0004cbd2dfba0b00f499, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 8b01c8bd95fe0004cbd2dfba0b00f499, type: 3}
 --- !u!4 &1760314417 stripped
 Transform:

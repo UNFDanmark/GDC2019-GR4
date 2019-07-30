@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class FuelConsumptionScript : MonoBehaviour
 {
     public float maximumFuel = 100;   
-    public int consumptionRate = 5;
+    public int inputsPerFuel = 5;
     public Slider fuelBar;
 
     public float currentFuel = 0;
@@ -50,7 +50,7 @@ public class FuelConsumptionScript : MonoBehaviour
     public void ConsumeFuel()
     {
         consumptionCounter++;
-        if (consumptionCounter == consumptionRate)
+        if (consumptionCounter == inputsPerFuel)
         {
             currentFuel--;
             consumptionCounter = 0;
