@@ -12,4 +12,19 @@ public class LevelChangerScript : MonoBehaviour
         managerScript = GameObject.Find("GameManager").GetComponent<GameManagerScript>();
         SceneManager.LoadScene(managerScript.previousScene);
     }
+
+    public void GoToMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
+
+    public void ExitGame()
+    {
+        Application.Quit();
+    }
+
+    public void BeginGame()
+    {
+        SceneManager.LoadScene("Mechanics test");
+    }
 }
