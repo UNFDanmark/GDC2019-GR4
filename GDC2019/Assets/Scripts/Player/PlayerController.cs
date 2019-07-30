@@ -33,14 +33,6 @@ public class PlayerController : MonoBehaviour
     {
         transform.rotation = Quaternion.LookRotation(new Vector3(rb.velocity.x, 0, rb.velocity.z));
 
-        //Resets player position, for testing only
-        if (Input.GetKey(KeyCode.I)&& Input.GetKey(KeyCode.O)&& Input.GetKey(KeyCode.P))
-        {
-            transform.position = Vector3.zero + Vector3.up*1.1f;
-            rb.velocity = Vector3.zero;
-            fuelConsume.currentFuel = fuelConsume.maximumFuel;
-        }
-
         if (wantToMove)
         {
             if (!source.isPlaying)

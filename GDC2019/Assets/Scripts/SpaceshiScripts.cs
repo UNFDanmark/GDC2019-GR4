@@ -22,6 +22,7 @@ public class SpaceshiScripts : MonoBehaviour
             if (managerScript.partPickedUp == true)
             {
                 managerScript.partReturned = true;
+                other.gameObject.SetActive(false);
             }
         }
     }
