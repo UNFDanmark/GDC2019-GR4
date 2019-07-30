@@ -12,7 +12,8 @@ public class PlayerController : MonoBehaviour
     Rigidbody rb;
     FuelConsumptionScript fuelConsume;
     public AudioSource source;
-    
+
+    GameManagerScript managerScript;
     float horizontalMove = 0f;
     float verticalMove = 0f;
     Vector3 previousAngleOfVelocity;
@@ -27,8 +28,8 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         fuelConsume = GetComponent<FuelConsumptionScript>();
-        
-        
+
+        managerScript = GameObject.Find("GameManager").GetComponent<GameManagerScript>();
     }
 
     // Update is called once per frame
@@ -73,14 +74,12 @@ public class PlayerController : MonoBehaviour
 
         if (wantToMove)
         {
-            
             previousVelocity = rb.velocity;
             Move();
-            
         }
-        
 
-        
+
+
     }
     void Move()
     {
