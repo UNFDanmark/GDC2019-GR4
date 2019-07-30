@@ -13,13 +13,11 @@ public class PlayerController : MonoBehaviour
     FuelConsumptionScript fuelConsume;
     public AudioSource source;
 
-    GameManagerScript managerScript;
     float horizontalMove = 0f;
     float verticalMove = 0f;
     Vector3 previousAngleOfVelocity;
     Vector3 desiredAngle;
     bool wantToMove = false;
-    bool startedThrust = false;
     Vector3 previousVelocity = new Vector3(0, 0, 0);
     
     
@@ -28,8 +26,6 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         fuelConsume = GetComponent<FuelConsumptionScript>();
-
-        managerScript = GameObject.Find("GameManager").GetComponent<GameManagerScript>();
     }
 
     // Update is called once per frame
@@ -45,16 +41,19 @@ public class PlayerController : MonoBehaviour
             fuelConsume.currentFuel = fuelConsume.maximumFuel;
         }
 
-        if (startedThrust && !source.isPlaying)
+        if (wantToMove)
         {
-            source.Play();
+            if (!source.isPlaying)
+            {
+                source.Play();
+            }
         }
         else
         {
             source.Stop();
         }
-
     }
+
     void FixedUpdate()
     {
         horizontalMove = Input.GetAxis("Horizontal") * moveForce;
@@ -64,12 +63,10 @@ public class PlayerController : MonoBehaviour
         if (horizontalMove != 0 || verticalMove != 0)
         {
             wantToMove = true;
-            startedThrust = true;
         }
         else
         {
             wantToMove = false;
-            startedThrust = false;
         }
 
         if (wantToMove)
