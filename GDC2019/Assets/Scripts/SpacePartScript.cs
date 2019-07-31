@@ -21,7 +21,7 @@ public class SpacePartScript : MonoBehaviour
         {
             managerScript.partPickedUp = true;
             managerScript.spaceshipLight.SetActive(true);
-            AudioSource.PlayClipAtPoint(pickupSound, transform.position);
+            other.gameObject.GetComponent<AudioSource>().PlayOneShot(pickupSound);
             gameObject.SetActive(false);
         }
 
