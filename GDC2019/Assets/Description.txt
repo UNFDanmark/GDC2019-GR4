@@ -1,0 +1,6 @@
+Du spiller som en astronaut, hvis rumskib lige er blevet ramt af en asteroide. 
+Med en begrænset mængde brændstof at arbejde med, er det nu dit job at hente alle delene af skibet, så du kan komme hjem igen.
+Men pas på at du ikke støder ind i asteroiderne under din færd!
+
+Controls:
+WASD/ piletaster
